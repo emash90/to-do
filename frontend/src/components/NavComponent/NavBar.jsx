@@ -1,6 +1,6 @@
 import React from 'react'
-import {Nav, Navbar, Button, Container, NavDropdown} from 'react-bootstrap'
-import { useSelector } from 'react-redux'
+import {Nav, Navbar, Container, NavDropdown} from 'react-bootstrap'
+//import { useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 
 
@@ -23,12 +23,12 @@ function NavBar() {
           <LinkContainer to='/'>
             <Nav.Link>Home</Nav.Link>
           </LinkContainer>
-          <NavDropdown /*title= */id="basic-nav-dropdown">
+          <NavDropdown title='user' id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+            <NavDropdown.Item><i class="fa fa-sign-out" aria-hidden="true" style={{marginRight: '20px'}}></i>Logout</NavDropdown.Item>
           </NavDropdown>
       </Nav>
     </Navbar.Collapse>

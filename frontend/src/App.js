@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Home from './components/TasksComponents/Home'
+import Home from './components/HomeComponents/Home'
 import Login from './components/AuthComponents/Login';
 import Register from './components/AuthComponents/Register';
 import NavBar from './components/NavComponent/NavBar';
