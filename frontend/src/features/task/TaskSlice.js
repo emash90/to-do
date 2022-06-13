@@ -70,10 +70,30 @@ export const updateTask = createAsyncThunk(
     async (data, thunkAPI) => {
         const id = data.id;
         const taskData = JSON.stringify(data.updatedTask);
-        console.log(`details ${id} and ${taskData}`);
         try {
             const token = thunkAPI.getState().auth.user.token;
             return await taskService.updateTask(id, taskData, token);
+        } catch (error) {
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString();
+            return thunkAPI.rejectWithValue(message);
+        }
+    }
+);
+
+//handle check function
+export const checkTask = createAsyncThunk(
+    "tasks/check",
+    async (data, thunkAPI) => {
+        const taskId = data.taskId;
+        const taskData = JSON.stringify(data.updatedTask);
+        try {
+            const token = thunkAPI.getState().auth.user.token;
+            return await taskService.checkTask(taskId, taskData, token);
         } catch (error) {
             const message =
                 (error.response &&
@@ -142,15 +162,25 @@ export const taskSlice = createSlice({
                 state.isLoading = false;
                 state.isSuccess = true;
                 state.isError = false;
-                return state.tasks.forEach((task, i) => {
-                    if (task._id === action.payload._id) {
-                        state.tasks[i] = action.payload;
-                    } else {
-                        state.tasks = state.tasks;
-                    }
-                });
+                state.tasks = state.tasks
             })
             .addCase(updateTask.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.isSuccess = false;
+                state.message = action.payload;
+            })
+            .addCase(checkTask.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(checkTask.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isSuccess = true;
+                state.isError = false;
+                state.tasks = state.tasks
+                
+            })
+            .addCase(checkTask.rejected, (state, action) => {
                 state.isLoading = false;
                 state.isError = true;
                 state.isSuccess = false;

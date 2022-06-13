@@ -16,7 +16,6 @@ function AddTask({ taskData, setTaskData, onChange, taskName, author }) {
 
     const handleTaskSubmit = (e) => {
         e.preventDefault();
-        console.log(taskData);
         if (taskData._id) {
             const id = taskData._id;
             const updatedTask = {
@@ -28,7 +27,6 @@ function AddTask({ taskData, setTaskData, onChange, taskName, author }) {
                 id
             }
             dispatch(updateTask(data));
-            console.log(JSON.stringify(data));
         } else {
             dispatch(createTask(taskData));
         }

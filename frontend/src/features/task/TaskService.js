@@ -48,8 +48,21 @@ const updateTask = async (id, taskData, token) => {
     };
     const response = await axios.put(`${API_URI}` + id, taskData, config);
 
-    console.log(`updated task: ${response.data}`);
     return response.data;
+};
+
+//check task
+
+const checkTask = async (taskId, taskData, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    };
+    const response = await axios.patch(`${API_URI}` + taskId, taskData, config);
+
+    return response.data;
+    console.log(`checked task: ${response.data}`);
 };
 
 const taskService = {
@@ -57,6 +70,7 @@ const taskService = {
     getTasks,
     deleteTask,
     updateTask,
+    checkTask
 };
 
 export default taskService;

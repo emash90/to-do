@@ -60,7 +60,7 @@ const toggleIsComplete = asyncHandler(async (req, res) => {
             return res.status(400).json("No task was found");
         }
         if (task.user_id.toString() !== user.id) {
-            return res.status(401).send("not authorised");
+            return res.status(401).send("not authorised, token error");
         }
         const taskToupdate = await Task.findByIdAndUpdate(
             { _id: taskId },

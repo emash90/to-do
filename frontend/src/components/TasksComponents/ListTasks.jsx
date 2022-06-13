@@ -9,6 +9,7 @@ import {
     getTasks,
     reset,
     deleteTask,
+    checkTask,
 } from "/Users/edwin/Desktop/to-do/frontend/src/features/task/TaskSlice";
 
 function ListTasks({ setTaskData, onChange, taskName, author }) {
@@ -41,9 +42,20 @@ function ListTasks({ setTaskData, onChange, taskName, author }) {
             behavior: "smooth",
         });
         const taskToBeEdited = tasks.filter((task) => task._id === taskId);
-        console.log(taskToBeEdited[0]);
         setTaskData(taskToBeEdited[0]);
     };
+    const handleCheck = (taskId, taskData) => {
+        const taskToBeEdited = tasks.filter((task) => task._id === taskId);
+        setTaskData(taskToBeEdited[0]);
+        const data = {
+            taskId,
+            taskData
+        }
+        dispatch(checkTask(data, taskId))
+        return () => {
+            dispatch(reset());
+        };
+    }
     if (isLoading) {
         return <SpinnerComponent />;
     }
@@ -62,10 +74,22 @@ function ListTasks({ setTaskData, onChange, taskName, author }) {
                             </p>
                         </div>
                         <div className="right-container ms-auto">
-                            <i
+                            {task.isComplete ? (
+                                <i
+                                    className="fa fa-check-square"
+                                    style={{color: "#1e6f1e"}}
+                                    aria-hidden="true"
+                                    onClick={() => {handleCheck(task._id)}}
+                                ></i>
+                                
+                            ) : (
+                                <i
                                 className="fa fa-check-square"
+                                style={{color: "#766d6d"}}
                                 aria-hidden="true"
+                                onClick={() => {handleCheck(task._id)}}
                             ></i>
+                            )}
                             <i
                                 className="fa fa-pencil"
                                 aria-hidden="true"
