@@ -6,9 +6,16 @@
 }
 .todo-container {
     display: flex;
-    flex-direction: column;
     max-width: 100%;
     margin-bottom: 1rem;
-    border: 2px solid gray;
+    border-top: 2px solid gray;
     border-radius: 8px;
+}
+.right-container, .left-container {
+    margin: 1rem ;
+}
+.right-container i {
+    padding: .5rem;
+    border: 1px solid grey;
+    cursor: pointer;
 }
