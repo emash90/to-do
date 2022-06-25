@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URI = "https://lets-to-do.herokuapp.com/api/task/";
+const API_URI = "process.env.REACT_APP_BASE_URL/api/task/";
 
 //create tasks
 console.log(API_URI);

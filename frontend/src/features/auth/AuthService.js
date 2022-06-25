@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URI = "https://lets-to-do.herokuapp.com/api/user/";
+const API_URI = "process.env.REACT_APP_BASE_URL/api/user/";
 
 //register user
 
