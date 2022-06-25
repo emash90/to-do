@@ -17,6 +17,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH');
 //     next();
 //   });
+
+app.get("*", (req, res) =>
+    res.sendFile(
+        path.resolve(__dirname, "../", "frontend", "build", "index.html")
+    )
+);
+
+
 //defining out listening port
 const port = process.env.PORT || 5500;
 
