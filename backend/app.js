@@ -5,6 +5,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 require("dotenv").config(); // to be able to use variables stored in dotenv file
 const bodyParser = require("body-parser");
+const path = require('path')
 
 app.use(morgan("dev"));
 app.use(cors());
