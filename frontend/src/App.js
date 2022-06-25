@@ -8,10 +8,12 @@ import Tasks from "./components/TasksComponents/Tasks";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "./components/NavComponent/Footer";
 
 function App() {
     return (
         <>
+
             <div className="App">
                 <BrowserRouter>
                     <NavBar />
@@ -21,6 +23,7 @@ function App() {
                         <Route path="/register" element={<Register />} />
                         <Route path="/task" element={<Tasks />} />
                     </Routes>
+                    <Footer />
                 </BrowserRouter>
                 <ToastContainer />
             </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import "./ListTask.css";
 import { useEffect } from "react";
+import { toast } from 'react-toastify'
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -45,6 +46,8 @@ function ListTasks({ setTaskData, onChange, taskName, author }) {
         setTaskData(taskToBeEdited[0]);
     };
     const handleCheck = (taskId, taskData) => {
+        toast('task complete!',
+        {position: toast.POSITION.BOTTOM_LEFT})
         const taskToBeEdited = tasks.filter((task) => task._id === taskId);
         setTaskData(taskToBeEdited[0]);
         const data = {

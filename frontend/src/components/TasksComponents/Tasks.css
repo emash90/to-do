@@ -1,6 +1,6 @@
 .task-container {
     max-width: 650px;
-    min-height: 70vh;
+    max-height: 80%;
     display: flex;
     flex-direction: column;
     margin: 3rem auto;
