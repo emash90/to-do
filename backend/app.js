@@ -18,6 +18,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH');
 //     next();
 //   });
+//defining routes
+app.use("/api/user", require("./routes/userRoutes"));
+app.use("/api/task", require("./routes/taskRoutes"));
+
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../frontend/build")));
 } else {
@@ -49,6 +53,3 @@ mongoose
         console.log(error);
     });
 
-//defining routes
-app.use("/api/user", require("./routes/userRoutes"));
-app.use("/api/task", require("./routes/taskRoutes"));
