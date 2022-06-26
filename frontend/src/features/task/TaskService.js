@@ -3,7 +3,6 @@ import axios from "axios";
 const API_URI = "https://lets-to-do.herokuapp.com/api/task/";
 
 //create tasks
-console.log(API_URI);
 
 const createTask = async (taskData, token) => {
     const config = {
