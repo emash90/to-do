@@ -29,15 +29,25 @@ if (process.env.NODE_ENV === "production") {
         res.send('set to "production"');
     });
 }
-// app.get("*", (req, res) =>
-//     res.sendFile(
-//         path.resolve(__dirname, "../", "frontend", "build", "index.html")
-//     )
-// );
+const port = process.env.PORT || 5500;
+
+app.get("*", (req, res) =>
+    res.sendFile(
+        path.resolve(__dirname, "../", "frontend", "build", "index.html")
+    )
+);
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+});
 
 
 //defining out listening port
-const port = process.env.PORT || 5500;
 
 //connecting to our mongo db
 

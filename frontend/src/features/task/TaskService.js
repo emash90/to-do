@@ -11,7 +11,7 @@ const createTask = async (taskData, token) => {
         },
     };
 
-    const response = await axios.post(API_URI, taskData, config);
+    const response = await axios.post("https://emash-to-do.herokuapp.com/api/task/", taskData, config);
 
     return response.data;
 };
@@ -23,7 +23,7 @@ const getTasks = async (token) => {
         },
     };
 
-    const response = await axios.get(API_URI, config);
+    const response = await axios.get("https://emash-to-do.herokuapp.com/api/task/", config);
 
     return response.data;
 };
