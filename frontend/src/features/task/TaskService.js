@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URI = "https://lets-to-do.herokuapp.com/api/task/";
+const API_URI = "https://emash-to-do.herokuapp.com/api/task/";
 
 //create tasks
 

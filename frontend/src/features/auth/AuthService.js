@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URI = "https://lets-to-do.herokuapp.com/api/user/";
+const API_URI = "https://emash-to-do.herokuapp.com/api/user/";
+console.log(API_URI)
 
 //register user
 
